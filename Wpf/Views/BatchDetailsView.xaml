@@ -1,0 +1,92 @@
+﻿<UserControl x:Class="Wpf.Views.BatchDetailsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:local="clr-namespace:Wpf.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style x:Key="LblStyle" TargetType="Label">
+            <Setter Property="Margin" Value="0 0 50 0"/>
+            <Setter Property="HorizontalAlignment"  Value="Right"/>
+        </Style>
+        <Style x:Key="TbStyle" TargetType="TextBox">
+            <Setter Property="Margin" Value="0,5,10,5"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Width" Value="120px"/>
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="4" HorizontalAlignment="Center" FontSize="28" FontWeight="Bold" FontStyle="Normal" >Batch Details</TextBlock>
+        <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Margin="0 0 50 0">Id</Label>
+        <TextBox Grid.Row="1" Grid.Column="1" Name="tbId" HorizontalAlignment="Left" Margin="0 5 10 5" Width="120px">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="LostFocus">
+                    <i:InvokeCommandAction Command="{Binding TextChangedCommand}" CommandParameter="{Binding Text, ElementName=tbId}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
+        
+    <!--RelativeSource AncestorType={x:Type Window}}, Mode=TwoWay-->
+        <Label Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" Margin="0 0 50 0">StartDate</Label>
+        <TextBox Grid.Row="1" Grid.Column="3" Name="tbName" HorizontalAlignment="Left" Margin="0 5 10 5" Width="120px" Text="{Binding BatchInstance.StartDate, StringFormat='dd/MM/yyyy'}" />
+
+        <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Right" Margin="0 0 50 0">BatchDesc</Label>
+        <TextBox Grid.Row="2" Grid.Column="1" Name="tbBatchDesc" HorizontalAlignment="Left" Margin="0 5 10 5" Width="120px" Text="{Binding BatchInstance.Stream}" />
+
+        <Label Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" Margin="0 0 50 0">EndDate</Label>
+        <TextBox Grid.Row="2" Grid.Column="3" Name="tbEndDate" HorizontalAlignment="Left" Margin="0 5 10 5" Width="120px" Text="{Binding BatchInstance.EndDate, StringFormat='dd/MM/yyyy'}"/>
+
+        <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" Margin="0 0 50 0">Faculty</Label>
+        <ComboBox Name="cmbFaculytId" ItemsSource="{Binding FacultyDropdown}" SelectedValue="{Binding CmbSelectedItem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Width="120px" Margin="0,5,10,5" Grid.Column="1" Grid.Row="3">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Id}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <DataGrid Name="gdBatch" Grid.Row="4" Grid.ColumnSpan="2" Margin="5,8" Padding="3" AutoGenerateColumns="False" ItemsSource="{Binding Path=ParticipantDetails}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Width="Auto" Binding="{Binding Path=Id}"/>
+                <DataGridTextColumn Header="Name" Width="Auto" Binding="{Binding Path=Name}"/>
+                <DataGridTextColumn Header="Batchid" Width="Auto" Binding="{Binding Path=Batchid}"/>
+                <DataGridTextColumn Header="DateofRegistration" Width="Auto" Binding="{Binding Path=DateOfRegistration}"/>
+                <!--<DataGridTextColumn Header="Email" Width="Auto" Binding="{Binding Path=Id}"/>-->
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Grid.Row="5" Grid.ColumnSpan="2" Name="AddParticipant" Height="30" Margin="5,8" Padding="3" Content="Click here to add new item">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="Click">
+                    <i:InvokeCommandAction Command="{Binding AddParticipantCommand}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </Button>
+        <!-- IsOpen="{Binding PopupState}"  HorizontalOffset="-150" VerticalOffset="20" -->
+        <Popup Name="PopupParticipant" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Placement="Bottom" StaysOpen="False"  PlacementTarget="{Binding ElementName=AddParticipant}" IsOpen="{Binding IsOpen}" 
+               AllowsTransparency="True">
+            <StackPanel>
+                <local:ParticipantView />
+            </StackPanel>
+        </Popup>
+    </Grid>
+</UserControl>

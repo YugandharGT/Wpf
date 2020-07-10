@@ -1,0 +1,77 @@
+﻿<UserControl x:Class="Wpf.Views.BatchView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:local="clr-namespace:Wpf.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <StackPanel>
+            <TextBlock TextAlignment="Center" FontSize="28" FontWeight="Bold" FontStyle="Normal" >Add Batch</TextBlock>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left">Batch Id</Label>
+                <TextBox Grid.Row="0" Grid.Column="2" Name="tbBatchId" Text="{Binding BatchId}" HorizontalAlignment="Left" Margin="0,5,10,5" Width="120px" />
+
+                <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left">Start Date</Label>
+                <!--<TextBox Grid.Row="1" Grid.Column="2" Name="tbStartDate" Text="{Binding StartDate, StringFormat='dd/MM/yyyy'}" HorizontalAlignment="Left" Margin="0,5,10,5" Width="120px"/>-->
+                <DatePicker Grid.Row="1" Grid.Column="2" Name="tbStartDate" Text="{Binding StringFormat='dd/MM/yyyy'}" HorizontalAlignment = "Left" Margin = "0,5,10,5" Width="120" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectedDateChanged">
+                            <i:InvokeCommandAction Command="{Binding StartDateChangeCommand}" CommandParameter="{Binding Text, ElementName=tbStartDate}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </DatePicker>
+                
+                <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left">End Date</Label>
+                <!--<TextBox Grid.Row="2" Grid.Column="2" Name="tbEndDate" Text="{Binding EndDate, StringFormat='dd/MM/yyyy'}" HorizontalAlignment="Left" Margin="0,5,10,5" Width="120px"/>-->
+                <DatePicker Grid.Row="2" Grid.Column="2" Name="tbEndDate" Text="{Binding StringFormat='dd/MM/yyyy'}" HorizontalAlignment = "Left" Margin = "0,5,10,5" VerticalAlignment = "Top" Width="120" >
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="SelectedDateChanged">
+                            <i:InvokeCommandAction Command="{Binding EndDateChangeCommand}" CommandParameter="{Binding Text, ElementName=tbEndDate}"/>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </DatePicker>
+                <!--<DatePicker Grid.Row="2" Grid.Column="2">
+                    <DatePicker.Resources>
+                        <Style TargetType="{x:Type DatePickerTextBox}">
+                            <Setter Property="Control.Template">
+                                <Setter.Value>
+                                    <ControlTemplate>
+                                        <TextBox x:Name="tbEndDate" HorizontalAlignment="Left" Margin="0,5,10,5" Width="120px"
+                                    Text="{Binding Path=EndDate, RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}}" />
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DatePicker.Resources>
+                </DatePicker>-->
+
+                <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left">Stream</Label>
+                <TextBox Grid.Row="3" Grid.Column="2" Name="tbStream" Text="{Binding Stream}" HorizontalAlignment="Left" Margin="0,5,10,5" Width="120px"/>
+
+                <Label Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left">FacultyId</Label>
+                <TextBox Grid.Row="4" Grid.Column="2" Name="tbFacultyId" Text="{Binding FacultyId}" HorizontalAlignment="Left" Margin="0,5,10,5" Width="120px"/>
+
+                <Button Grid.Row="5" Grid.Column="2" HorizontalAlignment="Left" Height="30" Width="60" Command="{Binding AddBatchCommand}">Submit</Button>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>

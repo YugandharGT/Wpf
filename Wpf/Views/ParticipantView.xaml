@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="Wpf.Views.ParticipantView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:local="clr-namespace:Wpf.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border Background="GhostWhite" BorderBrush="Gainsboro" BorderThickness="1">
+    <Grid>
+        <StackPanel>
+            <TextBlock TextAlignment="Center" FontSize="28" FontWeight="Bold" FontStyle="Normal" >Add Participant</TextBlock>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left">Id</Label>
+                <TextBox Grid.Row="0" Grid.Column="2" Name="tbId" Text="{Binding Id}" HorizontalAlignment="Left" Margin="0,5,10,5" Width="120px" />
+
+                <Label Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left">Name</Label>
+                <TextBox Grid.Row="1" Grid.Column="2" Name="tbName" Text="{Binding Name}"  HorizontalAlignment="Left" Margin="0,5,10,5" Width="120px"/>
+
+                <Label Grid.Row="2" Grid.Column="1" HorizontalAlignment="Left">Date of Birth</Label>
+                    <TextBox Grid.Row="2" Grid.Column="2" Name="tbDateOfBirth" Text="{Binding DateOfBirth, StringFormat='dd/MM/yyyy'}" HorizontalAlignment="Left" Margin="0,5,10,5" Width="120px"/>
+
+                <Label Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left">Batchid</Label>
+                <TextBox Grid.Row="3" Grid.Column="2" Name="tbBatchid" Text="{Binding BatchId}" HorizontalAlignment="Left" Margin="0,5,10,5" Width="120px"/>
+
+                <Label Grid.Row="4" Grid.Column="1" HorizontalAlignment="Left">Course Registered</Label>
+                <TextBox Grid.Row="4" Grid.Column="2" Name="tbCourseRegistered" Text="{Binding CourseRegistered}" HorizontalAlignment="Left" Margin="0,5,10,5" Width="120px"/>
+
+                <Label Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left">Date of Registration</Label>
+                    <TextBox Grid.Row="5" Grid.Column="2" Name="tbDateRegistration" Text="{Binding DateOfRegistration, StringFormat='dd/MM/yyyy'}" HorizontalAlignment="Left" Margin="0,5,10,5" Width="120px"/>
+
+                    <Button Grid.Row="6" Grid.Column="2" HorizontalAlignment="Left" Height="30" Width="60" Content="Submit">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="PreviewMouseDown">
+                                <i:InvokeCommandAction Command="{Binding AddParticipantCommand}"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+                    </Button>
+            </Grid>
+        </StackPanel>
+    </Grid>
+    </Border>
+</UserControl>

@@ -1,0 +1,75 @@
+﻿<UserControl x:Class="Wpf.Views.TabView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Wpf.Views"
+             mc:Ignorable="d" 
+             Name="TabWindow"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <TabControl>
+            <TabItem>
+                <TabItem.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse Width="10" Height="10" Fill="DarkGray"/>
+                        <TextBlock>Faculty</TextBlock>
+                    </StackPanel>
+                </TabItem.Header>
+
+                <Grid x:Name="gdFaculty" Width="120" Height="120">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120" />
+                        <ColumnDefinition Width="120" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" Grid.Row="0" Name="btnAddFaculty" Background="Pink" BorderBrush="Black" BorderThickness="1" ClickMode="Hover" Margin="0 0 0 20" Command="{Binding AddFacultyCommand }" CommandParameter="Faculty" >Add Faculty</Button>
+                    <Button Grid.Column="0" Grid.Row="1" Name="btnSearchFaculty" Background="LightBlue" BorderBrush="Black" BorderThickness="1" ClickMode="Press"  Command="{Binding UpdateViewCommand }" CommandParameter="SearchFaculty">Search</Button>
+
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="Batch">
+
+                <Grid x:Name="gdBatch" Width="120" Height="120">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120" />
+                        <ColumnDefinition Width="120" />
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Grid.Row="0"  Name="btnAddBatch" Width="120" Background="Pink" BorderBrush="Black" BorderThickness="1" Margin="0 0 0 20">Add Batch</Button>
+                    <Button Grid.Column="0" Grid.Row="1"  Name="btnSearchBatch" Width="120" Background="LightBlue" BorderBrush="Black" BorderThickness="1">Batch Details</Button>
+
+                </Grid>
+
+            </TabItem>
+            <TabItem Header="Participant">
+                <Grid x:Name="gdParticipant" Width="120" Height="120">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="120" />
+                        <ColumnDefinition Width="120" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button  Grid.Column="0" Grid.Row="0" Name="btnAddParticipant" Width="120" Background="Pink" BorderBrush="Black" BorderThickness="1" Margin="0 0 0 20">Add Participant</Button>
+                    <Button  Grid.Column="0" Grid.Row="1" Name="btnSearchParticipant" Width="120" Background="LightBlue" BorderBrush="Black" BorderThickness="1">Seaarch Participant</Button>
+
+                </Grid>
+
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>
