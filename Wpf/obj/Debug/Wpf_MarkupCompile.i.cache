@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\Technology\Dotnet-Projects\VS19\Wpf\Wpf\App.xaml
-9-1926405603
+101161821735
 
-41-908073798
+42-1416737203
 611267843774
-MainWindow.xaml;Views\AddFacultyView.xaml;Views\AddParticipantView.xaml;Views\BatchDetailsView.xaml;Views\BatchView.xaml;Views\FacultySearchView.xaml;Views\ParticipantSearchView.xaml;Views\ParticipantView.xaml;Views\TabView.xaml;
+MainWindow.xaml;Views\AddFacultyView.xaml;Views\AddParticipantView.xaml;Views\BatchDetailsView.xaml;Views\BatchView.xaml;Views\FacultySearchView.xaml;Views\LoginView.xaml;Views\ParticipantSearchView.xaml;Views\ParticipantView.xaml;Views\TabView.xaml;
 
 True
 
