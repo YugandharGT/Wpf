@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Z8AatqTOwA8C0donWsb+lzcHftI+yASZEIg0WOEr8gJutv4/YTIqVhXU4Wb8n0MZoVgdvT8ImFxjkDmx8Qqeag==",
+  "success": true,
+  "projectFilePath": "D:\\Technology\\Dotnet-Projects\\VS19\\Wpf\\Wpf.Data\\Wpf.Data.csproj",
+  "expectedPackageFiles": [
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
